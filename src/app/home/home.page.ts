@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 import Swiper from 'swiper';
 
@@ -12,6 +13,8 @@ export class HomePage {
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
+
+  horizontalView = false;
 
   imageUrlList = [
     'https://historia.nationalgeographic.com.es/medio/2020/01/24/virgina-woolf-padecio-un-trastorno-bipolar-con-fases-depresivas-severas_9da23532_550x751.jpg', 
@@ -28,12 +31,14 @@ export class HomePage {
 
   move() {
     this.swiper?.activeIndex! < this.imageUrlList.length - 1 ? this.swiper?.slideNext() : this.swiper?.slideTo(0);
+
   }
 
-  indexControl() {
-    console.log('slidechange');
+  async expandSwiper() {
+    this.horizontalView = !this.horizontalView;
+    //this.horizontalView ? this.swiper?.changeDirection('vertical') : this.swiper?.changeDirection('vertical');
+    await ScreenOrientation.lock({orientation: this.horizontalView ? 'landscape' : 'portrait'});
   }
 
-  loopfix() {
-  }
+
 }
