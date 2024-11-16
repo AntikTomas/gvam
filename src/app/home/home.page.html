@@ -15,4 +15,33 @@
       <img [ngClass]="{'horizontal-slide': horizontalView}" [src]="i"/>
     </swiper-slide>
   </swiper-container>
+  <div class="btt-bar">
+    <ion-button class="btts">
+      <ion-icon name="location-outline" size="large"></ion-icon>
+    </ion-button>
+    <div class="btts-fonts">
+      <ion-button class="btts" (click)="decrement()" [disabled]="minReached()">
+        A-
+      </ion-button>
+      <ion-button class="btts" (click)="increment()" [disabled]="maxReached()">
+        A+
+      </ion-button>
+    </div>
+  </div>
+  <h1>¿Qué vas a encontrar en este Museo?</h1>
+  <ion-textarea [value]="" [ngStyle]="{'font-size': fontSize.toString() + 'px'}">
+    El Museo Postal y Telegráfico nace de la unión de dos museos; el Museo de Telégrafos y el Museo Postal.
+
+    Los orígenes del Museo de Telégrafos datan del 1865 cuando se hace un llamamiento a los funcionarios a través de las revistas técnicas para que contribuyan a la formación de un Museo mediante donaciones.
+
+    En 1873 se monta la Exposición Nacional de Telegrafía en Madrid con una función divulgativa de las colecciones. La sede de este Museo estaba la calle San Bernardo de Madrid.
+
+    El Museo Postal tiene su origen en 1904 cuando el director General Ángel García Rendueles envía  una circular a las jefaturas provinciales de Correos para recuperar  piezas carácter histórico-artístico para crear un museo.
+
+    Su sede se encontraba en la Real Casa de Correos hasta que en 1919 se traslada parte de la exposición al Palacio de Comunicaciones de Madrid.
+
+    El 9 de octubre de 1980 coincidiendo con el día mundial del Correo  se crea el Museo Postal y de Telecomunicación y se abre al público en un lateral del Palacio de Comunicaciones con las colecciones de ambos museos.
+
+    Se inauguró coincidiendo con el día 8 de marzo, día internacional de la mujer. La muestra recoge emisiones de sellos, sobres de primer día, fotografías, etc, que tienen como protagonista a la mujer. Comienza con la escritora gallega Rosalía de Castro y pasando por grandes figuras como Emilia Pardo Bazán, Clara Campoamor o Gloria Fuertes llega hasta Marie Curie. Además, se encuentran representadas actrices y cantantes de la actualidad como Ana Belén o Ana Duato.
+  </ion-textarea>
 </ion-content>

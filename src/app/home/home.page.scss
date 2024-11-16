@@ -57,11 +57,37 @@
     
   }
 
+  .btt-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .btts {
+      
+      --background: #ffcd03;
+      --color: #000;
+      --border-radius: 0;
+      --box-shadow: none;
+      width: 56px;
+      height: 56px;
+      /* &::part(native) {
+        height: 58px
+      } */
+    }
+
+    .btts-fonts {
+      .btts {
+        font-size: 24px;
+      }
+      
+    }
+  }
+
   &.scroll-content {
     &::part(scroll) {
       padding: 0;
       --offset-top: 0px;
-      //--offset-bottom: -56px;
     }
   }
 
