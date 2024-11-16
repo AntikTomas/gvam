@@ -1,4 +1,4 @@
-<ion-header class="header" [translucent]="true">
+<ion-header class="header" [ngStyle]="{'display': horizontalView ? 'none' : 'block'}">
   <ion-toolbar class="toolbar">
     <ion-title class="title">
       bienvenida
@@ -6,10 +6,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="content" [fullscreen]="true">
-  <swiper-container #swiper (click)="move()" (slidechange)="indexControl()" class="swiper" [loop]="true" [pagination]="true">
+<ion-content class="content" [fullscreen]="true" [ngClass]="{'scroll-content': horizontalView}">
+  <ion-button class="btt-horizontal" (click)="expandSwiper()">
+    <ion-icon name="expand-outline" size="large"></ion-icon>
+  </ion-button>
+  <swiper-container #swiper (click)="move()" class="swiper" [loop]="true" [pagination]="true" [ngClass]="{'horizontal-swipe': horizontalView}">
     <swiper-slide class="swiper-slide" *ngFor="let i of imageUrlList">
-      <img [src]="i"/>
+      <img [ngClass]="{'horizontal-slide': horizontalView}" [src]="i"/>
     </swiper-slide>
   </swiper-container>
 </ion-content>

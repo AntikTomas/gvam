@@ -5,18 +5,32 @@
     .title {
       --color: #FFF;
       text-transform: uppercase;
-      font-weight: 300;
+      font-weight: 400;
     }
   }
 }
 
 .content {
+  position: relative;
   --padding-top: 12px;
   --padding-start: 12px;
   --padding-end: 12px;
   --padding-bottom: 12px;
-  
+
+  .btt-horizontal {
+    position: absolute;
+    z-index: 10;
+    top: calc(16px + 56px);
+    right: 16px;
+    --background: #000;
+    --color: #ffcd03;
+    --border-radius: 0;
+    --padding-end: 8px;
+    --padding-start: 8px;
+  }
+
   .swiper {
+
     .swiper-slide{
       width: 100%;
     }
@@ -24,6 +38,31 @@
     &::part(bullet-active) {
       background: #fefefe;
     }
+
+    &::part(bullet) {
+      background: #6f6f6f;
+    }
+
+    &.horizontal-swipe {      
+      background-color: #000;
+
+
+      &::part(container) {
+        background-color: #000;
+        height: 40vw;
+        width: 100vh;
+      }
+
+    }
     
   }
+
+  &.scroll-content {
+    &::part(scroll) {
+      padding: 0;
+      --offset-top: 0px;
+      //--offset-bottom: -56px;
+    }
+  }
+
 }
