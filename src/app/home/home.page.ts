@@ -13,6 +13,11 @@ import { MapModalComponent } from '../components/map-modal/map-modal.component';
 })
 export class HomePage {
 
+  @ViewChild('music') audioElement: any;
+  song: any;
+  progress: number = 0;
+  isPlaying: boolean = false;
+
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
@@ -34,8 +39,15 @@ export class HomePage {
     this.fontSize = this.fontService.fontSize;
   }
 
-  ionViewDidEnter() {
+  ngAfterViewInit() {
+    // Inicializamos la duración después de que se cargue el audio
     this.swiper = this.swiperRef?.nativeElement.swiper;
+    this.song = this.audioElement.nativeElement;
+    console.log(this.audioElement);
+  }
+
+  ionViewDidEnter() {
+    
   }
 
   move() {
@@ -75,6 +87,21 @@ export class HomePage {
       breakpoints: [0.5, 0.75, 1]
     });
     modal.present();
+  }
+
+  async play() {
+    if (this.isPlaying) {
+      this.song.pause();
+    } else {
+      this.song.play();
+    }
+
+    this.isPlaying = !this.isPlaying;
+    
+  }
+
+  updateProgress() {
+    this.progress = this.song.currentTime / this.song.duration;
   }
 
 }

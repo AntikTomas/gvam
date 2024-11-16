@@ -14,8 +14,23 @@
     <swiper-slide class="swiper-slide" *ngFor="let i of imageUrlList">
       <img [ngClass]="{'horizontal-slide': horizontalView}" [src]="i"/>
     </swiper-slide>
+    
   </swiper-container>
+  <audio #music (timeupdate)="updateProgress()">
+    <source src="assets/audio/mozart.mp3" type="audio/mpeg">
+  </audio>
+  <ion-progress-bar [value]="progress">
+    
+  </ion-progress-bar>
   <div class="btt-bar">
+    <ion-button class="play-btt" (click)="play()">
+      <ng-container *ngIf="isPlaying; else paused">
+        <ion-icon name="pause-outline" size="large"></ion-icon>
+      </ng-container>
+      <ng-template #paused>
+        <ion-icon name="play-outline" size="large"></ion-icon>
+      </ng-template>
+    </ion-button>
     <ion-button class="btts" (click)="openModal()">
       <ion-icon name="location-outline" size="large"></ion-icon>
     </ion-button>
