@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 import Swiper from 'swiper';
+import { FontSizeService } from '../services/font-size.service';
 
 @Component({
   selector: 'app-home',
@@ -22,8 +23,13 @@ export class HomePage {
     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/640px-Marie_Curie_c._1920s.jpg',
   ]
 
-  constructor() {}
+  fontSize: number;
 
+  constructor(
+    private fontService: FontSizeService,
+  ) {
+    this.fontSize = this.fontService.fontSize;
+  }
 
   ionViewDidEnter() {
     this.swiper = this.swiperRef?.nativeElement.swiper;
@@ -40,5 +46,23 @@ export class HomePage {
     await ScreenOrientation.lock({orientation: this.horizontalView ? 'landscape' : 'portrait'});
   }
 
+  decrement() {
+    console.log('decrement home');
+    this.fontService.decrementSize();
+    this.fontSize = this.fontService.fontSize;
+  }
+
+  increment() {
+    this.fontService.incrementSize();
+    this.fontSize = this.fontService.fontSize;
+  }
+
+  maxReached() {
+    return this.fontService.maxSizeReached();
+  }
+
+  minReached() {
+    return this.fontService.minSizeReached();
+  }
 
 }
