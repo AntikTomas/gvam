@@ -57,11 +57,29 @@
     
   }
 
+  ion-progress-bar {
+    --progress-background: #ffcd03;
+  }
+
   .btt-bar {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    .play-btt {
+      position: absolute;
+      top: -80px;
+      left: 0;
+      z-index: 10;
+      --border-radius: 0;
+      --box-shadow: none;
+      width: 56px;
+      height: 56px;
+      --background: #000;
+      --color: #ffcd03;
+    }
 
     .btts {
       
